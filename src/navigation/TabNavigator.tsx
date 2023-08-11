@@ -6,10 +6,9 @@ import {RootStackParamsList} from './navigationType';
 // Tab screens
 import QuizSelectScreen from '../screens/QuizSelectScreen';
 import LeaderBoardScreen from '../screens/LeaderBoardScreen';
-import HomeScreen from '../screens/HomeScreen';
 import ProfileScreen from '../screens/ProfileScreen';
-//TAB BAR
-import TabBar from '../components/TabBar';
+import UpgradeScreen from '../screens/UpgradeScreen';
+
 import TabBarIcon from '../components/TabBarIcon';
 
 const Tab = createBottomTabNavigator<RootStackParamsList>();
@@ -17,7 +16,6 @@ const Tab = createBottomTabNavigator<RootStackParamsList>();
 const TabNavigator = () => {
   return (
     <Tab.Navigator
-      // tabBar={props => <TabBar {...props} />}
       screenOptions={{
         headerShown: false,
         tabBarShowLabel: false,
@@ -40,20 +38,25 @@ const TabNavigator = () => {
         },
       }}>
       <Tab.Screen
-        name="Home"
-        component={HomeScreen}
+        name="Profile"
+        component={ProfileScreen}
         options={{
           tabBarIcon: ({focused}) => (
-            <TabBarIcon focused={focused} routeName="Home" />
+            <TabBarIcon focused={focused} routeName="Profile" iconName="user" />
           ),
         }}
       />
+
       <Tab.Screen
         name="Quiz"
         component={QuizSelectScreen}
         options={{
           tabBarIcon: ({focused}) => (
-            <TabBarIcon focused={focused} routeName="Quiz" />
+            <TabBarIcon
+              focused={focused}
+              routeName="Quiz"
+              iconName="help-circle"
+            />
           ),
         }}
       />
@@ -62,16 +65,24 @@ const TabNavigator = () => {
         component={LeaderBoardScreen}
         options={{
           tabBarIcon: ({focused}) => (
-            <TabBarIcon focused={focused} routeName="Rankings" />
+            <TabBarIcon
+              focused={focused}
+              routeName="Rankings"
+              iconName="bar-chart-2"
+            />
           ),
         }}
       />
       <Tab.Screen
-        name="Profile"
-        component={ProfileScreen}
+        name="Upgrade"
+        component={UpgradeScreen}
         options={{
           tabBarIcon: ({focused}) => (
-            <TabBarIcon focused={focused} routeName="Profile" />
+            <TabBarIcon
+              focused={focused}
+              routeName="Upgrades"
+              iconName="chevrons-up"
+            />
           ),
         }}
       />

@@ -9,6 +9,7 @@ export type RootStackParamsList = {
   Quiz: undefined;
   Leaderboard: undefined;
   Profile: undefined;
+  Upgrade: undefined;
 };
 
 export type RootStackScreenProps<T extends keyof RootStackParamsList> =
