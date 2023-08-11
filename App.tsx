@@ -1,15 +1,13 @@
-import {Button, SafeAreaView, Text, View} from 'react-native';
-import React, {useState} from 'react';
-import HomeScreen from './src/screens/HomeScreen';
+import React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import StackNavigator from './src/navigation/StackNavigator';
 
 const App: React.FC = () => {
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
-
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-  };
-
-  return <HomeScreen />;
+  return (
+    <NavigationContainer>
+      <StackNavigator />
+    </NavigationContainer>
+  );
 };
 
 export default App;
