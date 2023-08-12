@@ -4,7 +4,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {RootStackParamsList} from './navigationType';
 
 // Tab screens
-import QuizSelectScreen from '../screens/QuizSelectScreen';
+import QuizSelectScreen from '../screens/QuizIntroScreen';
 import LeaderBoardScreen from '../screens/LeaderBoardScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import UpgradeScreen from '../screens/UpgradeScreen';
