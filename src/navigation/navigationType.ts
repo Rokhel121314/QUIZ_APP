@@ -14,6 +14,7 @@ export type RootStackParamsList = {
   Leaderboard: undefined;
   Profile: undefined;
   Upgrade: undefined;
+  Question: {data: QuizListData | undefined} | undefined;
 };
 
 // STACK SCREEN PROPS

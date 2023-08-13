@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 
 const RankAndPoints = () => {
   return (
-    <View className="h-16 bg-gray-50 mt-8 rounded-2xl flex-row items-center justify-center shadow-lg shadow-black">
+    <View className="h-16 bg-white mt-8 rounded-2xl flex-row items-center justify-center shadow-lg shadow-black">
       <View className="flex-row items-center justify-center w-1/2">
         <View className="w-1/2 flex-row justify-end pr-5">
           <Icon name="trophy" size={38} color={'#F6C000'} />

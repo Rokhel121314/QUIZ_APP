@@ -2,6 +2,7 @@ import {Pressable, Text} from 'react-native';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {UseNavigationProp} from '../navigation/navigationType';
+import StyledText from './StyledText';
 
 const NavigationBackBtn = () => {
   const navigation = useNavigation<UseNavigationProp<'Quiz'>>();
@@ -15,7 +16,11 @@ const NavigationBackBtn = () => {
         borderTopRightRadius: 20,
         borderBottomRightRadius: 20,
       }}>
-      <Text className="text-lg font-bold text-gray-50">BACK</Text>
+      <StyledText
+        textInput="BACK"
+        textStyle="text-lg text-gray-50"
+        color="#fff"
+      />
     </Pressable>
   );
 };
