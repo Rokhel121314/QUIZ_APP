@@ -9,7 +9,7 @@ const NavigationBackBtn = () => {
   return (
     <Pressable
       onPress={() => navigation.goBack()}
-      className="w-20 h-10 mt-5 ml-5 bg-green-500 items-center justify-center shadow-lg shadow-black"
+      className="w-20 h-10 bg-green-500 items-center justify-center shadow-lg shadow-black"
       style={{
         borderTopLeftRadius: 50,
         borderBottomLeftRadius: 50,

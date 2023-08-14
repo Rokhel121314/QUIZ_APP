@@ -4,6 +4,7 @@ import {RootStackScreenProps} from '../navigation/navigationType';
 import NavigationBackBtn from '../components/NavigationBackBtn';
 import {quizListData} from '../temp_data/quizListData';
 import StyledText from '../components/StyledText';
+import LargeBtn from '../components/LargeBtn';
 
 const QuizIntroScreen = ({route, navigation}: RootStackScreenProps<'Quiz'>) => {
   //
@@ -15,11 +16,17 @@ const QuizIntroScreen = ({route, navigation}: RootStackScreenProps<'Quiz'>) => {
   const category = route.params?.data.category.toUpperCase();
   const textColor = route.params?.data.textColor;
   const url = subjectData[0]?.url;
-  const questionData = route.params?.data.questions;
+
+  const handleNavigation = () => {
+    navigation.navigate('Question', {data: route.params?.data});
+  };
 
   return (
     <SafeAreaView className="flex-1" style={{backgroundColor: `${bgColor}`}}>
-      <NavigationBackBtn />
+      <View className="w-full mt-5 pl-5">
+        <NavigationBackBtn />
+      </View>
+
       <View className="w-full items-center mt-3">
         <StyledText
           textInput={'LEVEL 1-1'}
@@ -47,17 +54,7 @@ const QuizIntroScreen = ({route, navigation}: RootStackScreenProps<'Quiz'>) => {
         />
       </View>
       <View className="px-12 mt-20 w-full shadow-lg shadow-black">
-        <Pressable
-          onPress={() =>
-            navigation.navigate('Question', {data: route.params?.data})
-          }
-          className="h-20 bg-green-500 items-center justify-center  rounded-2xl shadow-lg shadow-black">
-          <StyledText
-            textInput="START"
-            textStyle="text-5xl font-semibold text-gray-50"
-            color="#fff"
-          />
-        </Pressable>
+        <LargeBtn onPress={handleNavigation} textInput="START" />
       </View>
     </SafeAreaView>
   );
