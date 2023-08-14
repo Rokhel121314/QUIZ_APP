@@ -53,14 +53,10 @@
 	<false/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>JetBrainsMono-Bold.ttf</string>
-		<string>JetBrainsMono-ExtraBold.ttf</string>
-		<string>JetBrainsMono-ExtraLight.ttf</string>
-		<string>JetBrainsMono-Light.ttf</string>
-		<string>JetBrainsMono-Medium.ttf</string>
-		<string>JetBrainsMono-Regular.ttf</string>
-		<string>JetBrainsMono-SemiBold.ttf</string>
-		<string>JetBrainsMono-Thin.ttf</string>
+		<string>Handjet-Black.ttf</string>
+		<string>Handjet Regular.ttf</string>
+		<string>Handjet.ttf</string>
+		<string>Handjet-SemiBold.ttf</string>
 	</array>
 </dict>
 </plist>

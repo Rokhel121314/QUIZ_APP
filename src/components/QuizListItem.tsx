@@ -6,14 +6,18 @@ import {QuizListData} from '../types/types';
 import {UseNavigationProp} from '../navigation/navigationType';
 
 const QuizListItem = ({data, index}: {data: QuizListData; index: number}) => {
+  //
   const navigation = useNavigation<UseNavigationProp<'Profile'>>();
+  const category = data.category.toUpperCase();
+  const textColor = data.textColor;
+
   return (
     <View
       className={`w-1/2 h-[200px] flex-grow relative ${
         index % 2 === 0 ? 'pr-3' : 'pl-3'
       }`}>
       <Pressable
-        className="w-full h-full bg-gray-50 rounded-2xl shadow-md shadow-gray-700 items-start justify-center px-3"
+        className="w-full h-full rounded-2xl bg-white shadow-md shadow-gray-700 items-start justify-center px-3"
         onPress={() => navigation.navigate('Quiz', {data: data})}>
         <View>
           <Image
@@ -22,8 +26,10 @@ const QuizListItem = ({data, index}: {data: QuizListData; index: number}) => {
           />
         </View>
         <View className="pl-2">
-          <Text className="font-semibold text-2xl text-gray-950">
-            {data.category.toLocaleUpperCase()}
+          <Text
+            className={'font-semibold text-2xl'}
+            style={{color: `${textColor}`}}>
+            {category}
           </Text>
           <Text className="text-xs font-semibold">Level 1</Text>
         </View>

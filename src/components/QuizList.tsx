@@ -1,4 +1,4 @@
-import {View, Text, ScrollView, FlatList} from 'react-native';
+import {View, FlatList} from 'react-native';
 import React from 'react';
 import {ListRenderItem} from 'react-native';
 import QuizListItem from './QuizListItem';
@@ -6,6 +6,7 @@ import {QuizListData} from '../types/types';
 import {quizListData} from '../temp_data/quizListData';
 
 const QuizList = () => {
+  //
   const renderItem: ListRenderItem<QuizListData> = ({item, index}) => (
     <QuizListItem data={item} index={index} />
   );

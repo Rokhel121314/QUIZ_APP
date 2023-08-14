@@ -11,7 +11,7 @@ const ProfileScreen = ({
   navigation,
 }: RootStackScreenProps<'Profile'>) => {
   return (
-    <SafeAreaView className="flex-1 px-5 bg-cyan-500">
+    <SafeAreaView className="flex-1 px-5 bg-white">
       <Title mainText="Hi, Jerick!" subText="Lets make this day productive!" />
       <RankAndPoints />
       <SubTitle mainText="Let's play" subText="" />
