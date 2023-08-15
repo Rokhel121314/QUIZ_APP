@@ -1,65 +1,65 @@
 export const quizListData = [
   {
     id: 1,
-    category: 'math',
-    url: require('../../assets/quiz_category_icons/math.png'),
+    category: 'general knowledge',
+    url: require('../../assets/quiz_category_icons/generalknowledge.png'),
     textColor: '#3BB94F',
     bgColor: 'rgba(116,190,128, .4)',
-    catchPhrase: 'ARE YOU PHYTAGORAS?',
+    catchPhrase: 'KNOW IT ALL?',
     questions: [
       {
         difficulty: 'easy',
         level: '1-1',
         questionApi:
-          'https://opentdb.com/api.php?amount=5&category=19&difficulty=easy',
+          'https://opentdb.com/api.php?amount=5&category=9&difficulty=easy',
       },
       {
         difficulty: 'easy',
         level: '1-2',
         questionApi:
-          'https://opentdb.com/api.php?amount=5&category=19&difficulty=easy',
+          'https://opentdb.com/api.php?amount=5&category=9&difficulty=easy',
       },
       {
         difficulty: 'easy',
         level: '1-3',
         questionApi:
-          'https://opentdb.com/api.php?amount=5&category=19&difficulty=easy',
+          'https://opentdb.com/api.php?amount=5&category=9&difficulty=easy',
       },
       {
         difficulty: 'medium',
         level: '2-1',
         questionApi:
-          'https://opentdb.com/api.php?amount=5&category=19&difficulty=medium',
+          'https://opentdb.com/api.php?amount=5&category=9&difficulty=medium',
       },
       {
         difficulty: 'medium',
         level: '2-2',
         questionApi:
-          'https://opentdb.com/api.php?amount=5&category=19&difficulty=medium',
+          'https://opentdb.com/api.php?amount=5&category=9&difficulty=medium',
       },
       {
         difficulty: 'medium',
         level: '2-3',
         questionApi:
-          'https://opentdb.com/api.php?amount=5&category=19&difficulty=medium',
+          'https://opentdb.com/api.php?amount=5&category=9&difficulty=medium',
       },
       {
         difficulty: 'hard',
         level: '3-1',
         questionApi:
-          'https://opentdb.com/api.php?amount=5&category=19&difficulty=hard',
+          'https://opentdb.com/api.php?amount=5&category=9&difficulty=hard',
       },
       {
         difficulty: 'hard',
         level: '3-2',
         questionApi:
-          'https://opentdb.com/api.php?amount=5&category=19&difficulty=hard',
+          'https://opentdb.com/api.php?amount=5&category=9&difficulty=hard',
       },
       {
         difficulty: 'hard',
         level: '3-3',
         questionApi:
-          'https://opentdb.com/api.php?amount=5&category=19&difficulty=hard',
+          'https://opentdb.com/api.php?amount=5&category=9&difficulty=hard',
       },
     ],
   },

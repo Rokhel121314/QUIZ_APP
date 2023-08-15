@@ -1,4 +1,4 @@
-import {View, Text, SafeAreaView} from 'react-native';
+import {SafeAreaView} from 'react-native';
 import React from 'react';
 import {RootStackScreenProps} from '../navigation/navigationType';
 import Title from '../components/Title';

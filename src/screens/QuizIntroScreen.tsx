@@ -36,7 +36,7 @@ const QuizIntroScreen = ({route, navigation}: RootStackScreenProps<'Quiz'>) => {
 
         <StyledText
           textInput={category}
-          textStyle="text-7xl mt-5"
+          textStyle="text-7xl mt-5 text-center"
           color={textColor}
         />
       </View>
