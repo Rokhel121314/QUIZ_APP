@@ -6,6 +6,7 @@ import Axios from 'axios';
 const useStoreApiToken = () => {
   //
   const [sessionToken, setSessionToken] = useState('');
+  const [newSessionToken, setNewSessionToken] = useState('');
 
   // setting up questions
   // 1. GENERATE QUIZ TOKEN TO PREVENT GIVING SAME QUESTION TWICE
@@ -30,7 +31,7 @@ const useStoreApiToken = () => {
     try {
       const apiToken = await generateQuizToken();
       await AsyncStorage.setItem('apiToken', apiToken);
-      setSessionToken(apiToken);
+      setNewSessionToken(apiToken);
     } catch (error) {
       console.log('error', error);
     }
@@ -57,7 +58,13 @@ const useStoreApiToken = () => {
       // remove error
     }
   };
-  return {sessionToken, getApiToken, saveApiToken, removeApiToken};
+  return {
+    sessionToken,
+    newSessionToken,
+    getApiToken,
+    saveApiToken,
+    removeApiToken,
+  };
 };
 
 export default useStoreApiToken;

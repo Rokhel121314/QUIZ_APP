@@ -11,6 +11,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import useStoreApiToken from '../hooks/useStoreApiToken';
 import useShuffle from '../hooks/useShuffle';
 import CountdownTimer from '../components/CountdownTimer';
+import ChoiceList from '../components/ChoiceList';
 
 export interface QuestionData {
   category: string;
@@ -30,7 +31,7 @@ const QuiestionScreen = ({
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [stage, setStage] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
-  const [timer, setTimer] = useState(10);
+  const [answered, setAnswered] = useState(false);
 
   // questions[index] dictates current level and questions
 
@@ -47,17 +48,28 @@ const QuiestionScreen = ({
   const bgColor = route.params?.data?.bgColor;
   const textColor = route.params?.data?.textColor;
 
-  const {getApiToken, sessionToken, removeApiToken} = useStoreApiToken();
+  const {sessionToken, newSessionToken, getApiToken, removeApiToken} =
+    useStoreApiToken();
   const shuffle = useShuffle();
 
   // GETTING QUIZ DATA
   const getQuizData = async (): Promise<QuestionData | undefined> => {
     setIsLoading(true);
+
     try {
       await getApiToken();
       if (typeof QUESTIONAPI === 'string') {
         const {data} = await Axios.get(`${QUESTIONAPI}&token=${sessionToken}`);
-        setQuestionsData(data.results);
+        if (data.response_code === 0) {
+          setQuestionsData(data.results);
+        } else {
+          await removeApiToken();
+          await getApiToken();
+          const {data} = await Axios.get(
+            `${QUESTIONAPI}&token=${newSessionToken}`,
+          );
+          setQuestionsData(data.results);
+        }
       } else return;
     } catch (error) {
       console.log('error', error);
@@ -71,26 +83,12 @@ const QuiestionScreen = ({
     setCurrentQuestion(0);
   }, [stage]);
 
-  const handlePickAnswer = (pickedAnswer: string) => {
-    setTimeout(() => {
-      if (pickedAnswer === correct_answer) {
-        Alert.alert('CORRECT!');
-        setTimeout(() => {
-          handleNextQuestion();
-        }, 2000);
-      } else {
-        Alert.alert('TRY HARDER NEXT TIME');
-        setTimeout(() => {
-          handleNextQuestion();
-        }, 2000);
-      }
-    }, 500);
-  };
-
   const handleNextQuestion = () => {
     if (currentQuestion >= 4) {
       setStage(stage + 1);
-    } else setCurrentQuestion(currentQuestion + 1);
+    } else {
+      setCurrentQuestion(currentQuestion + 1);
+    }
   };
 
   const newChoices = shuffle(type, choices);
@@ -107,9 +105,9 @@ const QuiestionScreen = ({
 
   return (
     <View className="flex-1" style={{backgroundColor: bgColor}}>
-      <View className="flex-row w-full px-5 justify-center mt-5">
+      <View className="flex-row w-full px-5 justify-between mt-5">
         {/* CATEGORY AND CURRENT LEVEL */}
-        {/* <NavigationBackBtn /> */}
+        <NavigationBackBtn />
         <StyledText
           textInput={category?.toUpperCase()}
           textStyle="text-4xl"
@@ -134,27 +132,21 @@ const QuiestionScreen = ({
       {/* QUESTION BOX */}
       <View className="w-full px-5 mt-16 relative">
         {/* TIMER CONTAINER*/}
-        <CountdownTimer />
+        <CountdownTimer
+          currentQuestion={currentQuestion}
+          answered={answered}
+          handleNextQuestion={handleNextQuestion}
+        />
         {/* QUESTION CONTAINER */}
         <View className="rounded-2xl min-h-[200px] h-auto bg-white shadow-md shadow-black justify-center">
-          <Text className="px-5 py-5 text-2xl text-black text-center">
+          <Text className="px-5 pt-6 pb-5 text-2xl text-black text-center">
             {question}
           </Text>
         </View>
       </View>
 
       {/* ANSWER CHOICES */}
-      <View className="w-full px-5 mt-10">
-        {newChoices.map((choice, index) => {
-          return (
-            <ChoiceItem
-              choice={choice}
-              key={index}
-              onPress={handlePickAnswer}
-            />
-          );
-        })}
-      </View>
+      <ChoiceList newChoices={newChoices} correct_answer={correct_answer} />
     </View>
   );
 };

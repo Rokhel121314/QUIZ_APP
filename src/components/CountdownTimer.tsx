@@ -1,21 +1,44 @@
 import {View, Text, Alert} from 'react-native';
 import React, {useState, useEffect} from 'react';
 
-const CountdownTimer = () => {
-  const [timer, setTimer] = useState(10);
+const CountdownTimer = ({
+  currentQuestion,
+  answered,
+  handleNextQuestion,
+}: {
+  currentQuestion: number;
+  answered: boolean;
+  handleNextQuestion: () => void;
+}) => {
+  const [timer, setTimer] = useState(15);
 
   //
+  let interval: NodeJS.Timer;
   useEffect(() => {
     if (timer > 0) {
-      const interval = setInterval(() => {
+      interval = setInterval(() => {
         setTimer(timer - 1);
       }, 1000);
       return () => clearInterval(interval);
     }
     if (timer === 0) {
-      Alert.alert('TIMES UP!');
+      // Alert.alert('TIMES UP!');
+      setTimeout(() => {
+        handleNextQuestion();
+      }, 2000);
     }
   }, [timer]);
+
+  // stop timer
+
+  const stopTimer = () => {
+    clearInterval(interval);
+  };
+
+  // reset timer
+  useEffect(() => {
+    setTimer(1000);
+  }, [currentQuestion]);
 
   return (
     <View className="w-16 h-16 p-1 rounded-full shadow shadow-black absolute bg-white z-10 -top-8 justify-center items-center inset-0 left-[48%]">
